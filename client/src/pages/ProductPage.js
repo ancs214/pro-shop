@@ -1,5 +1,6 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import axios from 'axios'
 import {
   Row,
   Col,
@@ -10,13 +11,25 @@ import {
   ListGroupItem,
 } from 'react-bootstrap'
 import Rating from '../components/Rating'
-import products from '../products'
 
 const ProductPage = () => {
+  const [product, setProduct] = useState({})
+
   //hook that returns an object of params from current url matched by <Route path>
   const params = useParams()
   //array method: for each product (p), find the product._id equal to product id at end of url. we also use props.match method
-  const product = products.find((p) => p._id === params.id)
+  // const product = products.find((p) => p._id === params.id)
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      //response will have a data property...we destructure response to just get data
+      const { data } = await axios.get(`/api/products/${params.id}`)
+      setProduct(data)
+    }
+
+    fetchProduct()
+    //second argument in useEffect is a dependency - anything you want to trigger useEffect when it changes
+  }, [])
 
   return (
     <>
