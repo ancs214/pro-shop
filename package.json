@@ -8,6 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server",
     "watch": "nodemon server/server.js",
+    "data:import": "node server/seeder",
+    "data:destroy": "node server/seeder -d",
     "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\""
   },
   "repository": {
