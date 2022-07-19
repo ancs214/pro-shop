@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import colors from 'colors'
+import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 //with ES modules in node, we must put .js at end of file names
 import connectDB from './config/db.js'
 
@@ -12,11 +13,15 @@ connectDB()
 
 const app = express()
 
-// app.get('/', (req, res) => {
-//   res.send('API is running...')
-// })
+app.get('/', (req, res) => {
+  res.send('API is running...')
+})
 
 app.use('/api/products', productRoutes)
+
+//custom middleware to handle errors
+app.use(notFound)
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 3001
 
