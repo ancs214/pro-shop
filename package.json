@@ -1,0 +1,25 @@
+{
+  "name": "proshop",
+  "version": "1.0.0",
+  "description": "MERN eCommerce app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server",
+    "watch": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ancs214/pro-shop.git"
+  },
+  "author": "Ashley-Noel Swarn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ancs214/pro-shop/issues"
+  },
+  "homepage": "https://github.com/ancs214/pro-shop#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  }
+}
