@@ -13,9 +13,13 @@
 // export default store
 
 import { configureStore } from '@reduxjs/toolkit'
+import { productListReducer } from './reducers/productReducers'
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    // Define a top-level state field named `productList`, handled by `productListReducer`
+    productList: productListReducer,
+  },
 })
 
 export default store
