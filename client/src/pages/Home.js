@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
 import { listProducts } from '../actions/productActions'
+import Message from '../components/Message.js'
+import Loader from '../components/Loader.js'
 
 const Home = () => {
   //useDispatch returns a reference to the dispatch func from Redux store to dispatch actions
@@ -22,9 +24,9 @@ const Home = () => {
     <>
       <h1>Latest Products</h1>
       {loading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
-        <h3>{error}</h3>
+        <Message variant='danger'>{error}</Message>
       ) : (
         <Row>
           {/* when we map through something to create a list, the element has to have a unique key */}
